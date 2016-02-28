@@ -10,7 +10,7 @@
 	<plugins>
 		<plugin path="$NAVIT_LIBDIR/*/${NAVIT_LIBPREFIX}lib*.so" ondemand="yes"/>
 		<plugin path="$NAVIT_LIBDIR/autoload/${NAVIT_LIBPREFIX}lib*.so"/>
-		<plugin path="$NAVIT_LIBDIR/*/${NAVIT_LIBPREFIX}libplugin_switch_layout.so" active="yes"/>
+		<!----><plugin path="$NAVIT_LIBDIR/*/${NAVIT_LIBPREFIX}libplugin_switch_layout.so" active="yes"/>
 		<plugin path="$NAVIT_LIBDIR/*/${NAVIT_LIBPREFIX}libbinding_dbus.so" active="no"/>
 		<plugin path="$NAVIT_LIBDIR/*/${NAVIT_LIBPREFIX}libgraphics_null.so" active="no"/>
 	</plugins>
@@ -38,7 +38,7 @@
 		For other formats see http://wiki.navit-project.org/index.php/Coordinate_format.
 		-->
 
-	<navit center="11.5666 48.1333" zoom="32" tracking="1" orientation="-1" recent_dest="250" pitch="15">
+	<navit center="11.5666 48.1333" zoom="32" tracking="1" orientation="-1" recent_dest="250" pitch="15" autozoom_active="1">
 
 		<!-- Use one of gtk_drawing_area, qt_qpainter or sdl. 
 		     On windows systems, use win32 -->
@@ -158,7 +158,8 @@
 
 <!-- Change osd_configuration depending on layout -->
 	<osd enabled="yes" name="ifnight_layout" update_period="1" type="cmd_interface" h="1" w="1" x="-1" y="-1" command='osd_configuration=layout.nightlayout ? 1 : 2' /> 
-	<osd enabled="yes" type="button" x="330" y="234" command='layout_name=layout.nightlayout?layout.nightlayout:layout.daylayout' accesskey="L" src="media_playlist_32_32.png"/>
+	<osd enabled="yes" type="button" x="330" y="234" command='layout_name=layout.nightlayout?layout.nightlayout:layout.daylayout' accesskey="L" src="media_playlist_32_32.png"/> 
+<!--	<osd enabled="yes" type="button" x="330" y="234" command='toggle_layout' accesskey="L" src="media_playlist_32_32.png"/>-->
 	<osd enabled="yes" type="toggle_announcer" use_overlay="1" accesskey="T" x="-36" y="194" w="32" h="32" 	background_color="#00000000" text_color="#FFFFFF" osd_configuration="3"/> 
 	
 	<!--<osd enabled="yes" type="button" x="200" y="200" command='osd_configuration=layout.daylayout ? 1 : 2 ' accesskey="K" src="media_playlist_32_32.png"/>
@@ -168,12 +169,12 @@
 	<osd enabled="yes" type="navigation_next_turn" x="0" y="0" w="50" h="40" icon_src="%s_wh_32_32.png"  																						background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
 	<!----><osd type="navigation_status" x="0" y="0" w="50" h="40" icon_src="%s_wh_32_32.png" enable_expression="osd_configuration==2 &amp;&amp; (navigation.nav_status==-1 || navigation.nav_status==1 || navigation.nav_status==2)"	background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/> <!---->
 	<osd enabled="yes" type="text" label="${navigation.item[1].length[named]}" font_size="250" x="0" y="40"  w="60" h="22" 																		background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
-	<osd enabled="yes" type="speed_warner" w="60" h="28"  x="0" y="62"   font_size="350" speed_exceed_limit_offset="19" speed_exceed_limit_percent="10" announce_on="1" label="text_only" 		background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
+	<osd enabled="yes" type="speed_warner" w="60" h="28"  x="0" y="62"   font_size="350" speed_exceed_limit_offset="19" speed_exceed_limit_percent="10" announce_on="1" label="text_only" 		background_color="#00000000" text_color="#FFFFFF" osd_configuration="3"/>
 	<osd enabled="yes" type="text" label="${navigation.item.length[named]}" x="0" y="90" w="60" h="15" 																				background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
 	<osd enabled="yes" type="text" label="${navigation.item.destination_time[remaining]}" x="0" y="105" w="60" h="15" 																			background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
-	<osd enabled="yes" type="audio_player" w="286" h="22"  x="50" y="0" font_size="200" 																										background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
+	<!----><osd enabled="yes" type="audio_player" w="286" h="22"  x="50" y="0" font_size="200" 																										background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/><!---->
 	<osd enabled="yes" type="text" label="${navigation.item[1].street_name} ${navigation.item[1].street_name_systematic}" font_size="225" x="50" y="22" w="286" h="18" 							background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
-	<osd enabled="yes" type="compass" font_size="150" x="-60" y="40" w="60" h="80" 																												background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
+	<osd enabled="yes" type="compass" font_size="150" x="-60" y="40" w="60" h="80" 																												background_color="#00000000" foreground_color="#FFFFFF" osd_configuration="2"/>
 	
 	<osd enabled="yes" type="text" label="${vehicle.position_speed}" x="-60" y="120" w="60" h="15" 																			background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
 	
@@ -188,12 +189,12 @@
 	<osd enabled="yes" type="navigation_next_turn" x="0" y="0" w="50" h="40" icon_src="%s_bk_32_32.png"  																						background_color="#00000000"  text_color="#111111" osd_configuration="1"/>
 	<!----><osd type="navigation_status" x="0" y="0" w="50" h="40" icon_src="%s_bk_32_32.png" enable_expression="osd_configuration==1 &amp;&amp; (navigation.nav_status==-1 || navigation.nav_status==1 || navigation.nav_status==2)" 	background_color="#00000000"  text_color="#111111" osd_configuration="1"/> <!---->
 	<osd enabled="yes" type="text" label="${navigation.item[1].length[named]}" font_size="250" x="0" y="40"  w="60" h="22" 																		background_color="#00000000"  text_color="#111111" osd_configuration="1"/>
-	<osd enabled="yes" type="speed_warner" w="60" h="28"  x="0" y="62"   font_size="350" speed_exceed_limit_offset="19" speed_exceed_limit_percent="10" announce_on="1" label="text_only" 		background_color="#00000000"  text_color="#111111" osd_configuration="1"/>
+<!--	<osd enabled="yes" type="speed_warner" w="60" h="28"  x="0" y="62"   font_size="350" speed_exceed_limit_offset="19" speed_exceed_limit_percent="10" announce_on="1" label="text_only" 		background_color="#00000000"  text_color="#111111" osd_configuration="1"/> -->
 	<osd enabled="yes" type="text" label="${navigation.item.length[named]}" x="0" y="90" w="60" h="15"																				background_color="#00000000"  text_color="#111111" osd_configuration="1"/>
 	<osd enabled="yes" type="text" label="${navigation.item.destination_time[remaining]}" x="0" y="105" w="60" h="15" 																			background_color="#00000000"  text_color="#111111" osd_configuration="1"/>
-	<osd enabled="yes" type="audio_player" w="286" h="22"  x="50" y="0" font_size="200" 																										background_color="#00000000"  text_color="#111111" osd_configuration="1"/>
+	<!----><osd enabled="yes" type="audio_player" w="286" h="22"  x="50" y="0" font_size="200" 																										background_color="#00000000"  text_color="#111111" osd_configuration="1"/><!---->
 	<osd enabled="yes" type="text" label="${navigation.item[1].street_name} ${navigation.item[1].street_name_systematic}" font_size="225" x="50" y="22" w="286" h="18" 							background_color="#00000000"  text_color="#111111" osd_configuration="1"/>
-	<osd enabled="yes" type="compass" font_size="150" x="-60" y="40" w="60" h="80"  																											background_color="#00000000"  text_color="#111111" osd_configuration="1"/>
+	<osd enabled="yes" type="compass" font_size="150" x="-60" y="40" w="60" h="80"  																											background_color="#00000000"  foreground_color="#111111" osd_configuration="1"/>
 	<osd enabled="yes" type="text" label="${vehicle.position_speed}" x="-60" y="120" w="60" h="15" 																			background_color="#00000000" text_color="#111111" osd_configuration="1"/>
 	<osd enabled="yes" type="button" command="audio_playback_previous_playlist" x="4" y="134" src="media_prev_bk_32_32.png" 																	background_color="#00000000"  text_color="#111111" osd_configuration="1"/>
 	<osd enabled="yes" type="button" command="audio_playback_next_playlist"x="4" y="164" src="media_next_bk_32_32.png" 																			background_color="#00000000"  text_color="#111111" osd_configuration="1"/>
@@ -203,11 +204,11 @@
 	<osd enabled="yes" type="text" label="${tracking.item.street_name} ${tracking.item.street_name_systematic}" font_size="200" x="50" y="-22"  w="236" h="22" 									background_color="#00000000"  text_color="#111111" osd_configuration="1"/>
 	
 		<!--<audio type="player-stub" />-->
-		<audio type="player-mpd" music_dir="/home/pi/stick/music" />
+		<!----><audio type="player-mpd" music_dir="/home/pi/stick/music" /><!---->
 		<!--<audio type="player-spotify" spotify_login="null" spotify_password="null" spotify_playlist="null"/>-->
 		
 		
-		<vehicle name="Demo" profilename="car" enabled="yes" active="yes" follow="1" source="demo://" speed="100"/>
+		<!-- <vehicle name="Demo" profilename="car" enabled="yes" active="yes" follow="1" source="demo://" speed="100"/>
 		<!-- Vehicle with GPS enabled for gpsd on unix -->
 		<vehicle name="Local GPS" profilename="car" enabled="yes" active="1" follow="1" source="gpsd://localhost" gpsd_query="w+xj"/>
 
