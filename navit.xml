@@ -42,7 +42,7 @@
 		For other formats see http://wiki.navit-project.org/index.php/Coordinate_format.
 		-->
 
-	<navit center="11.5666 48.1333" zoom="32" tracking="1" orientation="-1" recent_dest="250" pitch="15" autozoom_active="1">
+	<navit center="11.5666 48.1333" zoom="32" tracking="1" orientation="-1" recent_dest="250" pitch="10" autozoom_active="1">
 
 		<!-- Use one of gtk_drawing_area, qt_qpainter or sdl. 
 		     On windows systems, use win32 -->
@@ -67,7 +67,7 @@
 					<img src='music-blue' onclick='media_show_playlist()'><text>Music</text></img>
 					<a href='#Settings'><img src='gui_settings'><text>Settings</text></img></a>
 					<a href='#Route'><img src='gui_settings'><text>Route</text></img></a>
-					<img src='gui_quit' onclick='quit()'><text>Quit</text></img>
+					<img cond='navit.route.route_status&amp;1' src='gui_stop' onclick='abort_navigation();refresh()'><text>Stop Navigation</text></img>
 				</a>
 
 				<a name='Navigation'><text>Navigation</text>
@@ -77,7 +77,7 @@
 					<img cond='position_coord_geo' src='gui_vehicle' onclick='position(position_coord_geo,_("Vehicle Position"),8|32|64|128|256)'><script>write(position_coord_geo)</script></img>
 					<img src='gui_bookmark' onclick='bookmarks()'><text>Bookmarks</text></img>
 					<img src='gui_map' onclick='enter_coord()'><text>Coordinates</text></img>
-					<img cond='navit.route.route_status&amp;1' src='gui_stop' onclick='abort_navigation();refresh()'><text>Stop Navigation</text></img>
+					
 				</a>
 				<a name='Settings'><text>Settings</text>
 					<a href='#Settings Display'><img src='gui_display'><text>Display</text></img></a>
@@ -87,6 +87,7 @@
 				<!-- <a href='#Settings Vehicles'><img src='gui_vehicle'><text>Vehicle</text></img></a> -->
 					<img src='gui_rules' onclick='setting_rules()'><text>Rules</text></img>
 					<img src='gui_about' onclick='about()'><text>About</text></img>
+					<img src='gui_quit' onclick='quit()'><text>Quit</text></img>
 				</a>
 				<a name='Settings Display'><text>Display</text>
 				<!-- <img src='gui_display' onclick='setting_layout()'><text>Layout</text></img> -->
