@@ -21,10 +21,10 @@
 	<!-- Possible debug levels: error, warning, info, debug. -->
 	<debug name="global" dbg_level="error"/>
 	<!-- Example of setting the debug level for a single function.  -->
-	<debug name="navit:do_draw" dbg_level="error"/>
+	<debug name="navit:navit_cmd_switch_layout" dbg_level="debug"/>
 	<!-- This is here so one can copy&paste the contents of popup menus --> 
 	<debug name="navit:popup_printf_cb" dbg_level="debug"/>
-	
+	<debug name="plugin_switch_layout" dbg_level="debug"/>
 	<debug name="audio_player-mpd" dbg_level="error"/>
 	<!-- Example for logging timing/profiling information. Note the prefix "profile:".
 	<debug name="profile:navit:do_draw" dbg_level="debug"/>
@@ -59,7 +59,7 @@
 		<!-- The action that appears on map click is configurable with the attribute "on_map_click".
 		     To get the prvious behaviour of showing the map point menu use on_map_click='menu("#Map Point")'
 	        <gui type="internal" enabled="yes" icon_xs="8" icon_s="16" icon_l="32"  fullscreen="1">-->
-		<gui type="internal" enabled="yes" icon_xs="8" icon_s="16" icon_l="48"  fullscreen="1"><![CDATA[
+		<gui type="internal" enabled="yes" icon_xs="8" icon_s="16" icon_l="48"  fullscreen="1" font_size="200"><![CDATA[
 			<html>
 				<a name='Main Menu'><text>Main menu</text>
 					<img cond='flags&amp;2' src='gui_map' onclick='back_to_map()'><text>Show Map</text></img>
@@ -170,7 +170,7 @@
 	<!--<osd enabled="yes" type="button" x="200" y="200" command='osd_configuration=layout.daylayout ? 1 : 2 ' accesskey="K" src="media_playlist_32_32.png"/>
 	<osd enabled="yes" type="button" x="100" y="100" command='osd_configuration=osd_configuration==2 ? 1 : 2 ' accesskey="M" src="media_playlist_32_32.png"/>-->
 	<!--
-	[Navig][audio     album][ COM ]
+	[Navig][audio  playlist][ COM ]
 	[ation][audio     track][ PAS ]
 	[statu]{nav next street}[ S   ]
 	[SPWRN]					[speed]
