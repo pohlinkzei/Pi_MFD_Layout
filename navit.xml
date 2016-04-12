@@ -10,7 +10,7 @@
 	<plugins>
 		<plugin path="$NAVIT_LIBDIR/*/${NAVIT_LIBPREFIX}lib*.so" ondemand="yes"/>
 		<plugin path="$NAVIT_LIBDIR/autoload/${NAVIT_LIBPREFIX}lib*.so"/>
-		<!---->
+		<!---- >
 		<plugin path="$NAVIT_LIBDIR/*/${NAVIT_LIBPREFIX}libplugin_gpio_switch_layout.so" active="yes"/>
 		<!---->
 		<plugin path="$NAVIT_LIBDIR/*/${NAVIT_LIBPREFIX}libbinding_dbus.so" active="no"/>
@@ -23,7 +23,9 @@
 	<!-- Example of setting the debug level for a single function.  -->
 	<!-- This is here so one can copy&paste the contents of popup menus --> 
 	<debug name="navit:navit_cmd_switch_layout_day_night" dbg_level="debug"/>
+	<!---- >
 	<debug name="plugin_gpio_switch_layout" dbg_level="debug"/>
+	<!---->
  	<debug name="audio_player-mpd" dbg_level="error"/>
 	<!-- Example for logging timing/profiling information. Note the prefix "profile:".
 	<debug name="profile:navit:do_draw" dbg_level="debug"/>
