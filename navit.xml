@@ -452,7 +452,7 @@
 
 		<!-- If you dont want to use the sample map, either set enabled="no" in the next line or remove the xml file from the maps directory -->
 		<mapset enabled="yes">
-			<xi:include href="$NAVIT_SHAREDIR/Pi_MFD_Layout/maps/*.xml"/>
+			<xi:include href="~/.navit/Pi_MFD_Layout/maps/*.xml"/>
 		</mapset>
 
 		<!-- Mapset template for openstreetmaps -->
