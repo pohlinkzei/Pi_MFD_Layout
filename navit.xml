@@ -26,7 +26,7 @@
 	<!---- >
 	<debug name="plugin_gpio_switch_layout" dbg_level="debug"/>
 	<!---->
- 	<debug name="audio_player-mpd" dbg_level="error"/>
+ 	<debug name="audio_player-mpd" dbg_level="debug"/>
 	<!-- Example for logging timing/profiling information. Note the prefix "profile:".
 	<debug name="profile:navit:do_draw" dbg_level="debug"/>
 	-->
@@ -451,12 +451,12 @@
 		</mapset>
 
 		<!-- If you dont want to use the sample map, either set enabled="no" in the next line or remove the xml file from the maps directory -->
-		<mapset enabled="no">
-			<xi:include href="$NAVIT_SHAREDIR/maps/*.xml"/>
+		<mapset enabled="yes">
+			<xi:include href="$NAVIT_SHAREDIR/Pi_MFD_Layout/maps/*.xml"/>
 		</mapset>
 
 		<!-- Mapset template for openstreetmaps -->
-		<mapset enabled="yes">
+		<mapset enabled="no">
 			<map type="binfile" enabled="yes" data="/home/pi/stick/maps/*.bin"/>
 		</mapset>
 
