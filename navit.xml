@@ -26,7 +26,7 @@
 	<!---- >
 	<debug name="plugin_gpio_switch_layout" dbg_level="debug"/>
 	<!---->
- 	<debug name="audio_player-mpd" dbg_level="debug"/>
+ 	<debug name="audio_player-mpd" dbg_level="error"/>
 	<!-- Example for logging timing/profiling information. Note the prefix "profile:".
 	<debug name="profile:navit:do_draw" dbg_level="debug"/>
 	-->
@@ -60,7 +60,7 @@
 		<!-- The action that appears on map click is configurable with the attribute "on_map_click".
 		     To get the prvious behaviour of showing the map point menu use on_map_click='menu("#Map Point")'
 	        <gui type="internal" enabled="yes" icon_xs="8" icon_s="16" icon_l="32"  fullscreen="1">-->
-		<gui type="internal" enabled="yes" icon_xs="8" icon_s="16" icon_l="48"  fullscreen="1" font_size="200"><![CDATA[
+		<gui type="internal" enabled="yes" icon_xs="8" icon_s="16" icon_l="48"  fullscreen="0" font_size="200"><![CDATA[
 			<html>
 				<a name='Main Menu'><text>Main menu</text>
 					<img cond='flags&amp;2' src='gui_map' onclick='back_to_map()'><text>Show Map</text></img>
@@ -167,9 +167,9 @@
 <!--	<osd enabled="yes" type="button" x="330" y="234" command='layout_name=layout.nightlayout?layout.nightlayout:layout.daylayout' accesskey="L" src="media_playlist_32_32.png"/> 
 -->	<osd enabled="yes" type="button" x="330" y="234" use_overlay="1" command='switch_layout_day_night("manual_toggle")' accesskey="L" src="media_playlist_32_32.png" osd_configuration="3"/>
 	<osd enabled="yes" type="toggle_announcer" use_overlay="1" accesskey="T" x="-36" y="194" w="32" h="32" 	background_color="#00000000" text_color="#FFFFFF" osd_configuration="3"/> 
-	
-	<!--<osd enabled="yes" type="button" x="200" y="200" command='osd_configuration=layout.daylayout ? 1 : 2 ' accesskey="K" src="media_playlist_32_32.png"/>
-	<osd enabled="yes" type="button" x="100" y="100" command='osd_configuration=osd_configuration==2 ? 1 : 2 ' accesskey="M" src="media_playlist_32_32.png"/>-->
+	<osd enabled="yes" name="ifaudio_playing" type="cmd_interface" h="1" w="1" x="-1" y="-1" command='osd_configuration=audio.playing==1 ? osd_configuration &amp; 4 : osd_configuration &amp; ~4' update_period="1"/>
+	<!--<osd enabled="yes" type="button" x="200" y="200" command='osd_configuration=layout.daylayout ? 1 : 2 ' accesskey="K" src="media_playlist_32_32.png"/>-->
+	<osd enabled="yes" type="text" x="100" y="100" label="${osd_configuration} - ${audio.playing} "/>
 	<!--
 	[Navig][audio  playlist][ COM ]
 	[ation][audio     track][ PAS ]
@@ -196,7 +196,8 @@
 
 	<osd enabled="yes" type="button" command="audio_playback_previous_playlist()" x="4" y="134" src="media_prev_wh_32_32.png"  																background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
 	<osd enabled="yes" type="button" command="audio_playback_next_playlist()" x="4" y="164" src="media_next_wh_32_32.png" 																	background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
-	<osd enabled="yes" type="button" command="audio_playback_toggle()" x="4" y="194" src="media_play_wh_32_32.png" 																				background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
+	<osd enabled="yes" type="button" command="audio_playback_play()" x="4" y="194" src="media_pause_wh_32_32.png" 																				background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
+	<osd enabled="yes" type="button" command="audio_playback_pause()" x="4" y="194" src="media_play_wh_32_32.png" 																				background_color="#00000000" text_color="#FFFFFF" osd_configuration="6"/>
 	<!---->
 	<osd enabled="yes" type="audio_player" label="playlist" w="226" h="18"  x="50" y="0" font_size="200" 																										background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
 	<osd enabled="yes" type="audio_player" label="track" w="226" h="18"  x="50" y="18" font_size="200" 																										background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
@@ -222,7 +223,8 @@
 	
 	<osd enabled="yes" type="button" command="audio_playback_previous_playlist()" x="4" y="134" src="media_prev_bk_32_32.png" 																	background_color="#00000000"  text_color="#111111" osd_configuration="1"/>
 	<osd enabled="yes" type="button" command="audio_playback_next_playlist()"x="4" y="164" src="media_next_bk_32_32.png" 																			background_color="#00000000"  text_color="#111111" osd_configuration="1"/>
-	<osd enabled="yes" type="button" command="audio_playback_toggle()"x="4" y="194" src="media_play_bk_32_32.png" 																				background_color="#00000000"  text_color="#111111" osd_configuration="1"/>
+	<osd enabled="yes" type="button" command="audio_playback_play()"x="4" y="194" src="media_pause_bk_32_32.png" 																				background_color="#00000000"  text_color="#111111" osd_configuration="5"/>
+	<osd enabled="yes" type="button" command="audio_playback_pause()"x="4" y="194" src="media_play_bk_32_32.png" 																				background_color="#00000000"  text_color="#111111" osd_configuration="1"/>
 	<!---->
 	<osd enabled="yes" type="audio_player" label="playlist" w="226" h="18"  x="50" y="0" font_size="200" 																										background_color="#00000000"  text_color="#111111" osd_configuration="1"/>
 	<osd enabled="yes" type="audio_player" label="track" w="226" h="18"  x="50" y="18" font_size="200" 																										background_color="#00000000"  text_color="#111111" osd_configuration="1"/>
@@ -237,8 +239,8 @@
 	
 	<osd enabled="yes" type="text" label="${tracking.item.street_name} ${tracking.item.street_name_systematic}" font_size="200" x="50" y="-22"  w="236" h="22" 									background_color="#00000000"  text_color="#111111" osd_configuration="1"/>
 	
-		<!--<audio type="player-stub" />-->
-		<!----><audio type="player-mpd" music_dir="/home/pi/stick/music" /><!---->
+		<!----><audio type="player-stub" name="MP"/><!---->
+		<!---- ><audio type="player-mpd" music_dir="/home/pi/stick/music" /><!---->
 		<!--<audio type="player-spotify" spotify_login="null" spotify_password="null" spotify_playlist="null"/>-->
 		
 		
