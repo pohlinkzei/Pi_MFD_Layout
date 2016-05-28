@@ -193,6 +193,7 @@
 	<osd enabled="yes" type="speed_warner" w="60" h="28"  x="0" y="62"   font_size="350" speed_exceed_limit_offset="19" speed_exceed_limit_percent="10" announce_on="1" label="text_only" 		background_color="#00000000" text_color="#FFFFFF" osd_configuration="3"/>
 	<osd enabled="yes" type="text" label="${navigation.item.length[named]}" x="0" y="90" w="60" h="15" 																				background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
 	<osd enabled="yes" type="text" label="${navigation.item.destination_time[remaining]}" x="0" y="105" w="60" h="15" 																			background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
+																				background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
 
 	<osd enabled="yes" type="button" command="audio_playback_previous_playlist()" x="4" y="134" src="media_prev_wh_32_32.png"  																background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
 	<osd enabled="yes" type="button" command="audio_playback_next_playlist()" x="4" y="164" src="media_next_wh_32_32.png" 																	background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
@@ -205,6 +206,7 @@
 	
 	<osd enabled="yes" type="compass" font_size="150" x="-60" y="0" w="60" h="80" 																												background_color="#00000000" foreground_color="#FFFFFF" osd_configuration="2"/>
 	<osd enabled="yes" type="text" label="${vehicle.position_speed}" x="-60" y="80" w="60" h="15" 																			background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
+	<osd enabled="yes" type="text" label="${navigation.item.destination_length[named]}" x="-60" y="105" w="60" h="15" 
 	
 	<osd enabled="yes" type="button" command="audio_playback_previous_artist()"x="-36" y="134" src="media_prev_artist_wh_32_32.png" 																background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/> 
 	<osd enabled="yes" type="button" command="audio_playback_next_artist()"x="-36" y="164" src="media_next_artist_wh_32_32.png" 																	background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
@@ -219,6 +221,7 @@
 	<!--Speed Warner w="60" h="28"  x="0" y="62"-->
 	<osd enabled="yes" type="text" label="${navigation.item.length[named]}" x="0" y="90" w="60" h="15"																				background_color="#00000000"  text_color="#111111" osd_configuration="1"/>
 	<osd enabled="yes" type="text" label="${navigation.item.destination_time[remaining]}" x="0" y="105" w="60" h="15" 																			background_color="#00000000"  text_color="#111111" osd_configuration="1"/>
+	 																			background_color="#00000000"  text_color="#111111" osd_configuration="1"/>
 	
 	<osd enabled="yes" type="button" command="audio_playback_previous_playlist()" x="4" y="134" src="media_prev_bk_32_32.png" 																	background_color="#00000000"  text_color="#111111" osd_configuration="1"/>
 	<osd enabled="yes" type="button" command="audio_playback_next_playlist()"x="4" y="164" src="media_next_bk_32_32.png" 																			background_color="#00000000"  text_color="#111111" osd_configuration="1"/>
@@ -231,6 +234,7 @@
 	
 	<osd enabled="yes" type="compass" font_size="150" x="-60" y="0" w="60" h="80"  																											background_color="#00000000"  foreground_color="#111111" osd_configuration="1"/>
 	<osd enabled="yes" type="text" label="${vehicle.position_speed}" x="-60" y="80" w="60" h="15" 																			background_color="#00000000" text_color="#111111" osd_configuration="1"/>
+	<osd enabled="yes" type="text" label="${navigation.item.destination_length[named]}" x="-60" y="105" w="60" h="15"
 	
 	<osd enabled="yes" type="button" command="audio_playback_previous_artist()" x="-36" y="134" src="media_prev_artist_bk_32_32.png" 																background_color="#00000000"  text_color="#111111" osd_configuration="1"/> 
 	<osd enabled="yes" type="button" command="audio_playback_next_artist()" x="-36" y="164" src="media_next_artist_bk_32_32.png" 																	background_color="#00000000"  text_color="#111111" osd_configuration="1"/>
