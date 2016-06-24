@@ -26,7 +26,8 @@
 	<!---- >
 	<debug name="plugin_gpio_switch_layout" dbg_level="debug"/>
 	<!---->
- 	<debug name="audio_player-mpd" dbg_level="error"/>
+ 	<debug name="audio_player-stub" dbg_level="debug"/>
+ 	<debug name="audio" dbg_level="debug"/>
 	<!-- Example for logging timing/profiling information. Note the prefix "profile:".
 	<debug name="profile:navit:do_draw" dbg_level="debug"/>
 	-->
