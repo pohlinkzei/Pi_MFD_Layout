@@ -27,7 +27,7 @@
 	<debug name="plugin_gpio_switch_layout" dbg_level="debug"/>
 	<!---->
  	<debug name="audio_player-stub" dbg_level="debug"/>
- 	<debug name="navit:command_register_callbacks" dbg_level="debug"/>
+ 	<debug name="navit:command_register_callbacks" dbg_level="error"/>
 	<!-- Example for logging timing/profiling information. Note the prefix "profile:".
 	<debug name="profile:navit:do_draw" dbg_level="debug"/>
 	-->
@@ -231,7 +231,7 @@
 	<osd enabled="yes" type="button" command="audio_playback_previous_playlist()" x="4" y="134" src="media_prev_bk_32_32.png" 	background_color="#00000000" text_color="#111111" osd_configuration="1"/>
 	<osd enabled="yes" type="button" command="audio_playback_next_playlist()"x="4" y="164" src="media_next_bk_32_32.png" 	background_color="#00000000" text_color="#111111" osd_configuration="1"/>
 	<osd enabled="yes" type="button" command="audio_playback_play()"x="4" y="194" src="media_pause_bk_32_32.png" background_color="#00000000" text_color="#111111" enable_expression="osd_configuration==1 &amp;&amp; audio.playing==1"/>
-	<osd enabled="yes" type="button" command="audio_playback_pause()"x="4" y="194" src="media_play_bk_32_32.png" background_color="#00000000" text_color="#111111" enable_expression="osd_configuration==1 &amp;&amp; audio.aplaying==0"/>
+	<osd enabled="yes" type="button" command="audio_playback_pause()"x="4" y="194" src="media_play_bk_32_32.png" background_color="#00000000" text_color="#111111" enable_expression="osd_configuration==1 &amp;&amp; audio.playing==0"/>
 	<!---->
 	<osd enabled="yes" type="audio_player" label="playlist" w="226" h="18" x="50" y="0" font_size="200" background_color="#00000000" text_color="#111111" osd_configuration="1"/>
 	<osd enabled="yes" type="audio_player" label="track" w="226" h="18" x="50" y="18" font_size="200" background_color="#00000000" text_color="#111111" osd_configuration="1"/>
