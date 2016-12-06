@@ -25,8 +25,11 @@
 	<debug name="navit:navit_cmd_switch_layout_day_night" dbg_level="debug"/>
 	<!---- >
 	<debug name="plugin_gpio_switch_layout" dbg_level="debug"/>
-	<!---->
+	<!---- >
  	<debug name="audio_player-stub" dbg_level="debug"/>
+ 	<!---- >
+ 	<debug name="audio_player-mpd" dbg_level="debug"/>
+ 	<!---->
  	<debug name="navit:command_register_callbacks" dbg_level="error"/>
 	<!-- Example for logging timing/profiling information. Note the prefix "profile:".
 	<debug name="profile:navit:do_draw" dbg_level="debug"/>
@@ -66,7 +69,7 @@
 				<a name='Main Menu'><text>Main menu</text>
 					<img cond='flags&amp;2' src='gui_map' onclick='back_to_map()'><text>Show Map</text></img>
 					<a href='#Navigation'><img src='gui_maps'>Navigation</img></a>
-					<img src='music-blue' onclick='media_show_playlist()'><text>Music</text></img>
+					<img src='media_audio' onclick='media_show_playlist()'><text>Music</text></img>
 					<a href='#Settings'><img src='gui_settings'><text>Settings</text></img></a>
 					<a href='#Route'><img src='gui_settings'><text>Route</text></img></a>
 					<img cond='navit.route.route_status&amp;1' src='gui_stop' onclick='abort_navigation();refresh()'><text>Stop Navigation</text></img>
@@ -164,19 +167,19 @@
 -->
 
 
-<!----><audio type="player-stub" name="MP" music_dir="/"/><!---->
-		<!---- ><audio type="player-mpd" music_dir="/home/pi/stick/music" /><!---->
+<!---- ><audio type="player-stub" name="MP" music_dir="/"/><!---->
+		<!----><audio type="player-mpd" music_dir="/home/pi/stick/music" /><!---->
 		<!--<audio type="player-spotify" spotify_login="null" spotify_password="null" spotify_playlist="null"/>-->
 		
 
 <!-- Change osd_configuration depending on layout -->
 	<osd enabled="yes" name="ifnight_layout" update_period="1" type="cmd_interface" h="1" w="1" x="-1" y="-1" command='osd_configuration=layout.nightlayout ? 1 : 2' /> 
-<!--	<osd enabled="yes" type="button" x="330" y="234" command='layout_name=layout.nightlayout?layout.nightlayout:layout.daylayout' accesskey="L" src="media_playlist_32_32.png"/> 
--->	<osd enabled="yes" type="button" x="330" y="234" use_overlay="1" command='switch_layout_day_night("manual_toggle")' accesskey="L" src="media_playlist_32_32.png" osd_configuration="3"/>
+<!--	<osd enabled="yes" type="button" x="330" y="234" command='layout_name=layout.nightlayout?layout.nightlayout:layout.daylayout' accesskey="L" src="media_document_32_32.png"/> 
+-->	<osd enabled="yes" type="button" x="330" y="234" use_overlay="1" command='switch_layout_day_night("manual_toggle")' accesskey="L" src="media_document_32_32.png" osd_configuration="3"/>
 	<osd enabled="yes" type="toggle_announcer" use_overlay="1" accesskey="T" x="-36" y="194" w="32" h="32" 	background_color="#00000000" text_color="#FFFFFF" osd_configuration="3"/> 
 	<!--<osd enabled="yes" name="ifaudio.playing" type="cmd_interface" h="1" w="1" x="-1" y="-1" command='osd_configuration=audio.playing==1 ? osd_configuration+=4 : osd_configuration &amp; -=4' update_period="1"/>
 	<!--<osd enabled="yes" type="button" x="200" y="200" command='osd_configuration=layout.daylayout ? 1 : 2 ' accesskey="K" src="media_playlist_32_32.png"/>-->
-	<osd enabled="yes" type="text" x="100" y="100" label="${osd_configuration} - ${audio.playing} "/>
+	<!--<osd enabled="yes" type="text" x="100" y="100" label="${osd_configuration} - ${audio.playing} "/>-->
 	<!--
 	[Navig][audio  playlist][ COM ]
 	[ation][audio     track][ PAS ]
@@ -208,6 +211,17 @@
 	<!---->
 	<osd enabled="yes" type="audio_player" label="playlist" w="226" h="18" x="50" y="0" font_size="200" background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
 	<osd enabled="yes" type="audio_player" label="track" w="226" h="18" x="50" y="18" font_size="200" background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
+	<osd enabled="yes" type="button" command="audio_playback_toggle_repeat()"x="40" y="194" src="media_repeat_off_32_32.png" use_overlay="1" accesskey="R" background_color="#00000000" text_color="#111111" enable_expression="osd_configuration==2 &amp;&amp; audio.repeat==0"/>
+	<osd enabled="yes" type="button" command="audio_playback_toggle_repeat()"x="40" y="194" src="media_repeat_off_32_32.png" use_overlay="1" accesskey="R" background_color="#00000000" text_color="#111111" enable_expression="osd_configuration==2 &amp;&amp; audio.repeat==1"/>
+	<osd enabled="yes" type="button" command="audio_playback_toggle_repeat()"x="40" y="194" src="media_repeat_playlist_32_32.png" use_overlay="1" accesskey="R" background_color="#00000000" text_color="#111111" enable_expression="osd_configuration==2 &amp;&amp; audio.repeat==2"/>
+	<osd enabled="yes" type="button" command="audio_playback_toggle_repeat()"x="40" y="194" src="media_repeat_track_32_32.png" use_overlay="1" accesskey="R" background_color="#00000000" text_color="#111111" enable_expression="osd_configuration==2 &amp;&amp; audio.repeat==3"/>
+	
+	<osd enabled="yes" type="button" command="audio_playback_toggle_shuffle()"x="-72" y="194" src="media_shuffle_off_32_32.png" use_overlay="1" accesskey="S" background_color="#00000000" text_color="#111111" enable_expression="osd_configuration==2 &amp;&amp; audio.shuffle==0"/>
+	<osd enabled="yes" type="button" command="audio_playback_toggle_shuffle()"x="-72" y="194" src="media_shuffle_playlists_32_32.png" use_overlay="1" accesskey="S" background_color="#00000000" text_color="#111111" enable_expression="osd_configuration==2 &amp;&amp; audio.shuffle==1"/>
+	<osd enabled="yes" type="button" command="audio_playback_toggle_shuffle()"x="-72" y="194" src="media_shuffle_tracks_32_32.png" use_overlay="1" accesskey="S" background_color="#00000000" text_color="#111111" enable_expression="osd_configuration==2 &amp;&amp; audio.shuffle==2"/>
+	<osd enabled="yes" type="button" command="audio_playback_toggle_shuffle()"x="-72" y="194" src="media_shuffle_tracks_playlists_32_32.png" use_overlay="1" accesskey="S" background_color="#00000000" text_color="#111111" enable_expression="osd_configuration==2 &amp;&amp; audio.shuffle==3"/>
+	
+	
 	<!---->
 	<osd enabled="yes" type="text" label="${navigation.item[1].street_name} ${navigation.item[1].street_name_systematic}" font_size="225" x="50" y="36" w="226" h="18" 	background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
 	
@@ -235,6 +249,15 @@
 	<!---->
 	<osd enabled="yes" type="audio_player" label="playlist" w="226" h="18" x="50" y="0" font_size="200" background_color="#00000000" text_color="#111111" osd_configuration="1"/>
 	<osd enabled="yes" type="audio_player" label="track" w="226" h="18" x="50" y="18" font_size="200" background_color="#00000000" text_color="#111111" osd_configuration="1"/>
+	<osd enabled="yes" type="button" command="audio_playback_toggle_repeat()"x="40" y="194" src="media_repeat_off_32_32.png" use_overlay="1" accesskey="R" background_color="#00000000" text_color="#111111" enable_expression="osd_configuration==1 &amp;&amp; audio.repeat==0"/>
+	<osd enabled="yes" type="button" command="audio_playback_toggle_repeat()"x="40" y="194" src="media_repeat_off_32_32.png" use_overlay="1" accesskey="R" background_color="#00000000" text_color="#111111" enable_expression="osd_configuration==1 &amp;&amp; audio.repeat==1"/>
+	<osd enabled="yes" type="button" command="audio_playback_toggle_repeat()"x="40" y="194" src="media_repeat_playlist_32_32.png" use_overlay="1" accesskey="R" background_color="#00000000" text_color="#111111" enable_expression="osd_configuration==1 &amp;&amp; audio.repeat==2"/>
+	<osd enabled="yes" type="button" command="audio_playback_toggle_repeat()"x="40" y="194" src="media_repeat_track_32_32.png" use_overlay="1" accesskey="R" background_color="#00000000" text_color="#111111" enable_expression="osd_configuration==1 &amp;&amp; audio.repeat==3"/>
+	
+	<osd enabled="yes" type="button" command="audio_playback_toggle_shuffle()"x="-72" y="194" src="media_shuffle_off_32_32.png" use_overlay="1" accesskey="S" background_color="#00000000" text_color="#111111" enable_expression="osd_configuration==1 &amp;&amp; audio.shuffle==0"/>
+	<osd enabled="yes" type="button" command="audio_playback_toggle_shuffle()"x="-72" y="194" src="media_shuffle_playlists_32_32.png" use_overlay="1" accesskey="S" background_color="#00000000" text_color="#111111" enable_expression="osd_configuration==1 &amp;&amp; audio.shuffle==1"/>
+	<osd enabled="yes" type="button" command="audio_playback_toggle_shuffle()"x="-72" y="194" src="media_shuffle_tracks_32_32.png" use_overlay="1" accesskey="S" background_color="#00000000" text_color="#111111" enable_expression="osd_configuration==1 &amp;&amp; audio.shuffle==2"/>
+	<osd enabled="yes" type="button" command="audio_playback_toggle_shuffle()"x="-72" y="194" src="media_shuffle_tracks_playlists_32_32.png" use_overlay="1" accesskey="S" background_color="#00000000" text_color="#111111" enable_expression="osd_configuration==1 &amp;&amp; audio.shuffle==3"/>
 	<!---->
 	<osd enabled="yes" type="text" label="${navigation.item[1].street_name} ${navigation.item[1].street_name_systematic}" font_size="225" x="50" y="36" w="226" h="18" 	background_color="#00000000" text_color="#111111" osd_configuration="1"/>
 	
@@ -245,7 +268,15 @@
 	<osd enabled="yes" type="button" command="audio_playback_next_artist()" x="-36" y="164" src="media_next_artist_bk_32_32.png" 	background_color="#00000000" text_color="#111111" osd_configuration="1"/>
 	
 	<osd enabled="yes" type="text" label="${tracking.item.street_name} ${tracking.item.street_name_systematic}" font_size="200" x="50" y="-22" w="236" h="22" 	background_color="#00000000" text_color="#111111" osd_configuration="1"/>
+	<osd enabled="yes" type="button" command="audio_playback_toggle_repeat()"x="40" y="194" src="media_repeat_off_32_32.png" background_color="#00000000" text_color="#111111" enable_expression="osd_configuration==1 &amp;&amp; audio.repeat==0"/>
+	<osd enabled="yes" type="button" command="audio_playback_toggle_repeat()"x="40" y="194" src="media_repeat_off_32_32.png" background_color="#00000000" text_color="#111111" enable_expression="osd_configuration==1 &amp;&amp; audio.repeat==1"/>
+	<osd enabled="yes" type="button" command="audio_playback_toggle_repeat()"x="40" y="194" src="media_repeat_playlist_32_32.png" background_color="#00000000" text_color="#111111" enable_expression="osd_configuration==1 &amp;&amp; audio.repeat==2"/>
+	<osd enabled="yes" type="button" command="audio_playback_toggle_repeat()"x="40" y="194" src="media_repeat_track_32_32.png" background_color="#00000000" text_color="#111111" enable_expression="osd_configuration==1 &amp;&amp; audio.repeat==3"/>
 	
+	<osd enabled="yes" type="button" command="audio_playback_toggle_shuffle()"x="-72" y="194" src="media_shuffle_off_32_32.png" background_color="#00000000" text_color="#111111" enable_expression="osd_configuration==1 &amp;&amp; audio.shuffle==0"/>
+	<osd enabled="yes" type="button" command="audio_playback_toggle_shuffle()"x="-72" y="194" src="media_shuffle_playlists_32_32.png" background_color="#00000000" text_color="#111111" enable_expression="osd_configuration==1 &amp;&amp; audio.shuffle==1"/>
+	<osd enabled="yes" type="button" command="audio_playback_toggle_shuffle()"x="-72" y="194" src="media_shuffle_tracks_32_32.png" background_color="#00000000" text_color="#111111" enable_expression="osd_configuration==1 &amp;&amp; audio.shuffle==2"/>
+	<osd enabled="yes" type="button" command="audio_playback_toggle_shuffle()"x="-72" y="194" src="media_shuffle_tracks_playlists_32_32.png" background_color="#00000000" text_color="#111111" enable_expression="osd_configuration==1 &amp;&amp; audio.shuffle==3"/>
 		
 		
 		<!----> <vehicle name="Demo" profilename="car" enabled="yes" active="yes" follow="1" source="demo://" speed="100"/>
