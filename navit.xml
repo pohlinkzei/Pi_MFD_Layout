@@ -185,12 +185,10 @@
 
 <!-- Change osd_configuration depending on layout -->
 	<osd enabled="yes" name="ifnight_layout" update_period="1" type="cmd_interface" h="1" w="1" x="-1" y="-1" command='osd_configuration=layout.nightlayout ? 1 : 2' /> 
-<!--	<osd enabled="yes" type="button" x="330" y="234" command='layout_name=layout.nightlayout?layout.nightlayout:layout.daylayout' accesskey="L" src="media_playlist_32_32.png"/> 
+
 -->	<osd enabled="yes" type="button" x="330" y="234" use_overlay="1" command='switch_layout_day_night("manual_toggle")' accesskey="L" src="media_playlist_32_32.png" osd_configuration="3"/>
 	<osd enabled="yes" type="toggle_announcer" use_overlay="1" accesskey="T" x="-36" y="194" w="32" h="32" 	background_color="#00000000" text_color="#FFFFFF" osd_configuration="3"/> 
-	<!--<osd enabled="yes" name="ifaudio.playing" type="cmd_interface" h="1" w="1" x="-1" y="-1" command='osd_configuration=audio.playing==1 ? osd_configuration+=4 : osd_configuration &amp; -=4' update_period="1"/>
-	<!--<osd enabled="yes" type="button" x="200" y="200" command='osd_configuration=layout.daylayout ? 1 : 2 ' accesskey="K" src="media_playlist_32_32.png"/>-->
-	<osd enabled="yes" type="text" x="100" y="100" label="${osd_configuration} - ${audio.playing} "/>
+	
 	<!--
 	[Navig][audio  playlist][ COM ]
 	[ation][audio     track][ PAS ]
