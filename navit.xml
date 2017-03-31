@@ -11,7 +11,7 @@
 		<plugin path="$NAVIT_LIBDIR/*/${NAVIT_LIBPREFIX}lib*.so" ondemand="yes"/>
 		<plugin path="$NAVIT_LIBDIR/autoload/${NAVIT_LIBPREFIX}lib*.so"/>
 		<!---- >
-		<plugin path="$NAVIT_LIBDIR/*/${NAVIT_LIBPREFIX}libplugin_gpio_switch_layout.so" active="yes"/>
+		<plugin path="$NAVIT_LIBDIR/*/${NAVIT_LIBPREFIX}libplugin_i2c.so" active="yes"/>
 		<!---->
 		<plugin path="$NAVIT_LIBDIR/*/${NAVIT_LIBPREFIX}libbinding_dbus.so" active="no"/>
 		<plugin path="$NAVIT_LIBDIR/*/${NAVIT_LIBPREFIX}libgraphics_null.so" active="no"/>
@@ -56,7 +56,7 @@
 		<!-- The action that appears on map click is configurable with the attribute "on_map_click".
 		     To get the prvious behaviour of showing the map point menu use on_map_click='menu("#Map Point")'
 	        <gui type="internal" enabled="yes" icon_xs="8" icon_s="16" icon_l="32"  fullscreen="1">-->
-		<gui type="internal" enabled="yes" icon_xs="8" icon_s="16" icon_l="48"  fullscreen="1" font_size="200"><![CDATA[
+		<gui type="internal" enabled="yes" icon_xs="8" icon_s="16" icon_l="48"  fullscreen="1" font_size="200" hide_impossible_next_keys="1"><![CDATA[
 			<html>
 				<a name='Main Menu'><text>Main menu</text>
 					<img cond='flags&amp;2' src='gui_map' onclick='back_to_map()'><text>Show Map</text></img>
@@ -77,6 +77,7 @@
 					
 				</a>
 				<a name='Settings'><text>Settings</text>
+					<img src='gui_active' onclick='i2c()'><text>I2C</text></img>
 					<a href='#Settings Display'><img src='gui_display'><text>Display</text></img></a>
 					<img src='gui_maps' onclick='setting_maps()'><text>Maps</text></img>
 				<!-- <a href='#Settings Maps'><img src='gui_maps'><text>Maps</text></img></a> -->
@@ -295,15 +296,15 @@
 
 		<vehicleprofile name="car" route_depth="4:25%,8:40000,18:10000" flags="0x4000000" flags_forward_mask="0x4000002" flags_reverse_mask="0x4000001" maxspeed_handling="0" route_mode="0" static_speed="5" static_distance="25">
 			<roadprofile item_types="street_0,street_1_city,living_street,street_service,track_gravelled,track_unpaved,street_parking_lane" speed="10" route_weight="10" />
-			<roadprofile item_types="street_2_city,track_paved" speed="30" route_weight="30" />
-			<roadprofile item_types="street_3_city" speed="40" route_weight="40" />
-			<roadprofile item_types="street_4_city" speed="50" route_weight="50" />
+			<roadprofile item_types="street_2_city,track_paved" speed="30" route_weight="20" />
+			<roadprofile item_types="street_3_city" speed="40" route_weight="30" />
+			<roadprofile item_types="street_4_city" speed="50" route_weight="40" />
 			<roadprofile item_types="highway_city" speed="80" route_weight="80" />
-			<roadprofile item_types="street_1_land" speed="60" route_weight="60" />
-			<roadprofile item_types="street_2_land" speed="65" route_weight="65" />
+			<roadprofile item_types="street_1_land" speed="60" route_weight="50" />
+			<roadprofile item_types="street_2_land" speed="65" route_weight="60" />
 			<roadprofile item_types="street_3_land" speed="70" route_weight="70" />
 			<roadprofile item_types="street_4_land" speed="80" route_weight="80" />
-			<roadprofile item_types="street_n_lanes" speed="120" route_weight="120" />
+			<roadprofile item_types="street_n_lanes" speed="120" route_weight="100" />
 			<roadprofile item_types="highway_land" speed="120" route_weight="120" />
 			<roadprofile item_types="ramp" speed="40" route_weight="40" />
 			<!--roundabout does not apply to OSMaps -->
