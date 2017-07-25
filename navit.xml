@@ -10,7 +10,7 @@
 	<plugins>
 		<plugin path="$NAVIT_LIBDIR/*/${NAVIT_LIBPREFIX}lib*.so" ondemand="yes"/>
 		<plugin path="$NAVIT_LIBDIR/autoload/${NAVIT_LIBPREFIX}lib*.so"/>
-		<!---- >
+		<!---->
 		<plugin path="$NAVIT_LIBDIR/*/${NAVIT_LIBPREFIX}libplugin_i2c.so" active="yes"/>
 		<!---->
 		<plugin path="$NAVIT_LIBDIR/*/${NAVIT_LIBPREFIX}libbinding_dbus.so" active="no"/>
@@ -20,9 +20,9 @@
 	<!-- The global debug level (like using command line option "-d"). Ignored if option -d is used. -->
 	<!-- Possible debug levels: error, warning, info, debug. -->
 	<debug name="global" dbg_level="error"/>
+	<debug name="plugin_i2c" dbg_level="debug"/>
 	<!-- Example of setting the debug level for a single function.  -->
-	<!-- This is here so one can copy&paste the contents of popup menus --> 
-	<debug name="navit:navit_cmd_switch_layout_day_night" dbg_level="debug"/>
+	<!-- This is here so one can copy&paste the contents of popup menus -->
 	<!-- Example for logging timing/profiling information. Note the prefix "profile:".
 	<debug name="profile:navit:do_draw" dbg_level="debug"/>
 	-- >
@@ -77,7 +77,7 @@
 					
 				</a>
 				<a name='Settings'><text>Settings</text>
-					<img src='gui_active' onclick='i2c()'><text>I2C</text></img>
+					<img src='gui_active' onclick='service_show()'><text>I2C</text></img>
 					<a href='#Settings Display'><img src='gui_display'><text>Display</text></img></a>
 					<img src='gui_maps' onclick='setting_maps()'><text>Maps</text></img>
 				<!-- <a href='#Settings Maps'><img src='gui_maps'><text>Maps</text></img></a> -->
@@ -182,8 +182,10 @@
 <!---- ><audio type="player-stub" name="MP" music_dir="/"/><!---->
 		<!----><audio type="player-mpd" music_dir="/home/pi/stick/music" /><!---->
 		<!--<audio type="player-spotify" spotify_login="null" spotify_password="null" spotify_playlist="null"/>-->
+		<service type="i2c_service" source="/dev/i2c-1" />
 		
 
+		
 <!-- Change osd_configuration depending on layout -->
 	<osd enabled="yes" name="ifnight_layout" update_period="1" type="cmd_interface" h="1" w="1" x="-1" y="-1" command='osd_configuration=layout.nightlayout ? 1 : 2' /> 
 
