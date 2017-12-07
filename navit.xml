@@ -39,7 +39,7 @@
 		For other formats see http://wiki.navit-project.org/index.php/Coordinate_format.
 		-->
 
-	<navit center="11.5666 48.1333" zoom="32" tracking="1" orientation="-1" recent_dest="250" pitch="10" autozoom_active="1">
+	<navit center="11.5666 48.1333" zoom="32" tracking="1" orientation="-1" recent_dest="250" autozoom_active="1">
 
 		<!-- Use one of gtk_drawing_area, qt_qpainter or sdl. 
 		     On windows systems, use win32 -->
@@ -56,7 +56,7 @@
 		<!-- The action that appears on map click is configurable with the attribute "on_map_click".
 		     To get the prvious behaviour of showing the map point menu use on_map_click='menu("#Map Point")'
 	        <gui type="internal" enabled="yes" icon_xs="8" icon_s="16" icon_l="32"  fullscreen="1">-->
-		<gui type="internal" enabled="yes" icon_xs="8" icon_s="16" icon_l="48"  fullscreen="1" font_size="200" hide_impossible_next_keys="1"><![CDATA[
+		<gui type="internal" enabled="yes" icon_xs="8" icon_s="16" icon_l="48"  fullscreen="0" font_size="200" hide_impossible_next_keys="1"><![CDATA[
 			<html>
 				<a name='Main Menu'><text>Main menu</text>
 					<img cond='flags&amp;2' src='gui_map' onclick='back_to_map()'><text>Show Map</text></img>
@@ -289,9 +289,9 @@
 	
 		
 		
-		<!---- > <vehicle name="Demo" profilename="car" enabled="yes" active="yes" follow="1" source="demo://" speed="100"/>
+		<!----> <vehicle name="Demo" profilename="car" enabled="yes" active="yes" follow="1" source="demo://" speed="100"/>
 		<!-- Vehicle with GPS enabled for gpsd on unix -->
-		<!----> <vehicle name="Local GPS" profilename="car" enabled="yes" active="1" follow="1" source="gpsd://localhost" gpsd_query="w+xj"/>
+		<!---- > <vehicle name="Local GPS" profilename="car" enabled="yes" active="1" follow="1" source="gpsd://localhost" gpsd_query="w+xj"/>
 
 		<!-- For the cumulative displacement filter to be enabled, set cdf_histsize="x" here, with x being an integer somewhere around 4 -->
 		<tracking cdf_histsize="0"/>
