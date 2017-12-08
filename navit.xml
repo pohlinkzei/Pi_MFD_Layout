@@ -20,7 +20,7 @@
 	<!-- The global debug level (like using command line option "-d"). Ignored if option -d is used. -->
 	<!-- Possible debug levels: error, warning, info, debug. -->
 	<debug name="global" dbg_level="error"/>
-	<debug name="plugin_i2c" dbg_level="debug"/>
+	<debug name="plugin_i2c" dbg_level="error"/>
 	<!-- Example of setting the debug level for a single function.  -->
 	<!-- This is here so one can copy&paste the contents of popup menus -->
 	<!-- Example for logging timing/profiling information. Note the prefix "profile:".
@@ -56,7 +56,7 @@
 		<!-- The action that appears on map click is configurable with the attribute "on_map_click".
 		     To get the prvious behaviour of showing the map point menu use on_map_click='menu("#Map Point")'
 	        <gui type="internal" enabled="yes" icon_xs="8" icon_s="16" icon_l="32"  fullscreen="1">-->
-		<gui type="internal" enabled="yes" icon_xs="8" icon_s="16" icon_l="48"  fullscreen="0" font_size="200" hide_impossible_next_keys="1"><![CDATA[
+		<gui type="internal" enabled="yes" icon_xs="8" icon_s="16" icon_l="48"  fullscreen="1" font_size="200" hide_impossible_next_keys="1"><![CDATA[
 			<html>
 				<a name='Main Menu'><text>Main menu</text>
 					<img cond='flags&amp;2' src='gui_map' onclick='back_to_map()'><text>Show Map</text></img>
@@ -289,9 +289,9 @@
 	
 		
 		
-		<!----> <vehicle name="Demo" profilename="car" enabled="yes" active="yes" follow="1" source="demo://" speed="100"/>
+		<!---- > <vehicle name="Demo" profilename="car" enabled="yes" active="yes" follow="1" source="demo://" speed="100"/>
 		<!-- Vehicle with GPS enabled for gpsd on unix -->
-		<!---- > <vehicle name="Local GPS" profilename="car" enabled="yes" active="1" follow="1" source="gpsd://localhost" gpsd_query="w+xj"/>
+		<!----> <vehicle name="Local GPS" profilename="car" enabled="yes" active="1" follow="1" source="gpsd://localhost" gpsd_query="w+xj"/>
 
 		<!-- For the cumulative displacement filter to be enabled, set cdf_histsize="x" here, with x being an integer somewhere around 4 -->
 		<tracking cdf_histsize="0"/>
