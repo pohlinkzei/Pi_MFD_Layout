@@ -169,19 +169,49 @@ Waypoint</text></img>
 		<!-- osd items allow to position display and control items directly on top of the map.
 		You can find a list of all the available OSDs items here:
 		http://wiki.navit-project.org/index.php/OSD -->
-		<osd enabled="no" type="compass"/>
-		<osd enabled="no" type="navigation_next_turn"/> 
+		<osd enabled="yes" name="ifnight_layout" update_period="1" type="cmd_interface" h="1" w="1" x="-1" y="-1" command='osd_configuration=layout.nightlayout ? 1 : 2' /> 
+		<osd enabled="yes" type="button" x="100" y="100" use_overlay="1" command='switch_layout_day_night("manual_toggle")' accesskey="L" src="gui_active_32_32.png" osd_configuration="3"/>
+		
+		<osd enabled="yes" type="compass"/>
+		<osd enabled="yes" type="navigation_next_turn"/> 
 
 		<!-- Commands include gui_internal_menu, gui_internal_fullscreen, zoom_in and zoom_out.
 			Usage of negative values change the button origins. x="0" y="0" specifies the top left, x="-0" y="-0" the bottom right corner.
 			It's always the top left corner of the icon, so you need to consider the icon's size when you enter the values. -->
 		<osd enabled="no" type="button" x="0" y="0" command="gui.fullscreen=!gui.fullscreen" src="toggle_fullscreen.png"/>
-		<osd enabled="no" type="button" x="-96" y="0" command="gui.menu(1)" src="menu.png"/>
-		<osd enabled="no" type="button" x="-96" y="-96" command="zoom_in()" src="zoom_in.png"/>
-		<osd enabled="no" type="button" x="0" y="-96" command="zoom_out()" src="zoom_out.png"/> 
+		<osd enabled="yes" type="button" x="-96" y="0" command="gui.menu(1)" src="menu.png"/>
+		<osd enabled="yes" type="image" x="-96" y="-96" src="zoom_in.png" background_color="#00000000" text_color="#111111" osd_configuration="1"/>
+		<osd enabled="yes" type="image" x="-96" y="-96" src="zoom_out.png" background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
+		<osd enabled="yes" type="scale" x="0" y="-96" use_overlay="1" background_color="#00000000" text_color="#111111" osd_configuration="1"/>
+		<osd enabled="yes" type="scale" x="10" y="-196" use_overlay="1" background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/> 
+		<osd enabled="yes" type="scale" x="-100" y="-100" use_overlay="1"/> 
+		
+		<!--
+		
+			<osd enabled="yes" type="button" command="audio_playback_toggle_shuffle()"x="-72" y="194" src="media_shuffle_tracks_playlists_32_32.png" use_overlay="1" accesskey="S" background_color="#00000000" text_color="#111111" enable_expression="osd_configuration==2 &amp;&amp; audio.shuffle==3"/>
+
+
+	<osd enabled="yes" type="button" command="audio_playback_previous_artist()"x="-36" y="134" src="media_prev_artist_wh_32_32.png" background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/> 
+	<osd enabled="yes" type="button" command="audio_playback_next_artist()"x="-36" y="164" src="media_next_artist_wh_32_32.png" 	background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
+	
+	<osd enabled="yes" type="text" label="${tracking.item.street_name} ${tracking.item.street_name_systematic}" font_size="200" x="50" y="-22" w="236" h="22" 	background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
+	
+	<!-- Daylayout background_color="#00000000" text_color="#111111" osd_configuration="1" -- >
+	<osd enabled="yes" type="navigation_next_turn" x="0" y="0" w="50" h="40" icon_src="%s_bk_32_32.png" background_color="#00000000" text_color="#111111" osd_configuration="1"/>
+	<osd type="navigation_status" x="0" y="0" w="50" h="40" icon_src="%s_bk_32_32.png" enable_expression="osd_configuration==1 &amp;&amp; (navigation.nav_status==-1 || navigation.nav_status==1 || navigation.nav_status==2)" 	background_color="#00000000" text_color="#111111" osd_configuration="1"/>
+	<osd enabled="yes" type="text" label="${navigation.item[1].length[named]}" font_size="250" x="0" y="40" w="60" h="22" background_color="#00000000" text_color="#111111" osd_configuration="1"/>
+	
+	<!--Speed Warner w="60" h="28" x="0" y="62"-- >
+	<osd enabled="yes" type="text" label="${navigation.item.length[named]}" x="0" y="90" w="60" h="15" background_color="#00000000" text_color="#111111" osd_configuration="1"/>
+	<osd enabled="yes" type="text" label="${navigation.item.destination_time[remaining]}" x="0" y="105" w="60" h="15" 	background_color="#00000000" text_color="#111111" osd_configuration="1"/>
+	<osd enabled="yes" type="text" label="${navigation.item.destination_length[named]}" x="0" y="120" w="60" h="15" 	background_color="#00000000" text_color="#111111" osd_configuration="1"/>
+	
+-->
+		
+		
 
 		<!-- Vehicle with GPS enabled for gpsd on unix -->
-		<vehicle name="Local GPS" profilename="car" enabled="yes" active="1" source="gpsd://localhost" gpsd_query="w+xj">
+		<vehicle name="Local GPS" profilename="car" enabled="no" active="1" source="gpsd://localhost" gpsd_query="w+xj">
 		<!-- Vehicle with GPS enabled for direct communication on windows. Remove the line above if you use this. -->
 		<!-- <vehicle name="Local GPS" profilename="car" follow="1" enabled="yes" active="1" 
 				source="serial:COM4 baudrate=4800 parity=N data=8 stop=1" > -->
@@ -193,7 +223,7 @@ Waypoint</text></img>
 		<!-- For SDL, you should add follow="1" to have the view centered on your position -->
 		<!-- <vehicle name="Meins" enabled="yes" source="gpsd://localhost" color="#0000ff" follow="1"/> -->
 
-		<vehicle name="Demo" profilename="car" enabled="no" source="demo://"/>
+		<vehicle name="Demo" profilename="car" enabled="yes" active="yes" follow="1" source="demo://" speed="100"/>
 
 		<!-- For the cumulative displacement filter to be enabled, set cdf_histsize="x" here, with x being an integer somewhere around 4 -->
 		<tracking cdf_histsize="0"/>
@@ -400,13 +430,13 @@ Waypoint</text></img>
 		</mapset>
 
 		<!-- If you dont want to use the sample map, either set enabled="no" in the next line or remove the xml file from the maps directory -->
-		<mapset enabled="yes">
+		<mapset enabled="no">
 			<xi:include href="$NAVIT_SHAREDIR/maps/*.xml"/>
 		</mapset>
 
 		<!-- Mapset template for openstreetmaps -->
-		<mapset enabled="no">
-			<map type="binfile" enabled="yes" data="/media/mmc2/MapsNavit/osm_europe.bin"/>
+		<mapset enabled="yes">
+			<map type="binfile" enabled="yes" data="~/stick/maps/*.bin"/>
 		</mapset>
 
 		<!-- Mapset template for garmin maps -->
