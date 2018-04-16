@@ -182,7 +182,7 @@ Waypoint</text></img>
 		<osd enabled="yes" type="button" x="-96" y="0" command="gui.menu(1)" src="menu.png"/>
 		<osd enabled="yes" type="image" x="-96" y="-96" src="zoom_in.png" background_color="#00000000" text_color="#111111" osd_configuration="1"/>
 		<osd enabled="yes" type="image" x="-96" y="-96" src="zoom_out.png" background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
-		<osd enabled="yes" type="scale" x="-100" y="-150" font_size="300" h="30" w="150" background_color="#00000000" text_color="#111111" osd_configuration="1"/>
+		<osd enabled="yes" type="scale" x="-150" y="-200" font_size="200" h="30" w="150" background_color="#00000000" text_color="#111111" osd_configuration="1"/>
 		<osd enabled="yes" type="scale" x="-200" y="-150"  font_size="200" h="10" w="150" background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/> 
 		 
 		<osd enabled="yes" type="scale" x="-400" y="-300" font_size="200" h="15" w="100"/> 
