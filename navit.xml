@@ -39,7 +39,7 @@
 		For other formats see http://wiki.navit-project.org/index.php/Coordinate_format.
 		-->
 
-	<navit center="11.5666 48.1333" zoom="32" tracking="1" orientation="-1" recent_dest="250" autozoom_active="1">
+	<navit center="11.5666 48.1333" zoom="32" tracking="1" orientation="-1" recent_dest="250" autozoom_active="1" autozoom="5">
 
 		<!-- Use one of gtk_drawing_area, qt_qpainter or sdl. 
 		     On windows systems, use win32 -->
@@ -189,7 +189,7 @@
 <!-- Change osd_configuration depending on layout -->
 	<osd enabled="yes" name="ifnight_layout" update_period="1" type="cmd_interface" h="1" w="1" x="-1" y="-1" command='osd_configuration=layout.nightlayout ? 1 : 2' /> 
 
--->	<osd enabled="yes" type="button" x="330" y="234" use_overlay="1" command='switch_layout_day_night("manual_toggle")' accesskey="L" src="media_playlist_32_32.png" osd_configuration="3"/>
+-->	<osd enabled="yes" type="button" x="330" y="234" use_overlay="1" command='switch_layout_day_night("manual_toggle")' accesskey="L" src="gui_active_32_32.png" osd_configuration="3"/>
 	<osd enabled="yes" type="toggle_announcer" use_overlay="1" accesskey="T" x="-36" y="194" w="32" h="32" 	background_color="#00000000" text_color="#FFFFFF" osd_configuration="3"/> 
 	
 	<!--
@@ -225,10 +225,10 @@
 	<osd enabled="yes" type="audio_player" label="track" w="286" h="18" x="50" y="18" font_size="200" background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
 	<!---->
 	<osd enabled="yes" type="text" label="${navigation.item[1].street_name} ${navigation.item[1].street_name_systematic}" font_size="225" x="50" y="36" w="226" h="18" 	background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
-	<!---- >
-	<osd enabled="yes" type="compass" font_size="150" x="-60" y="0" w="60" h="80" background_color="#00000000" foreground_color="#FFFFFF" osd_configuration="2"/>
 	<!---->
-	<osd enabled="yes" type="text" label="${vehicle.position_speed}" x="-60" y="80" w="60" h="15" 	background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
+	<osd enabled="yes" type="compass" font_size="150" x="-60" y="36" w="60" h="80" destination_dir_color="#EEEEEE" text_color="#FFFFFF" background_color="#00000000" foreground_color="#FFFFFF" osd_configuration="2"/>
+	<!---->
+	<osd enabled="yes" type="text" label="${vehicle.position_speed}" x="-60" y="120" w="60" h="15" 	background_color="#00000000" text_color="#FFFFFF" osd_configuration="2"/>
 	
 	<osd enabled="yes" type="button" command="audio_playback_toggle_repeat()"x="40" y="194" src="media_repeat_off_32_32.png" use_overlay="1" accesskey="R" background_color="#00000000" text_color="#111111" enable_expression="osd_configuration==2 &amp;&amp; audio.repeat==0"/>
 	<osd enabled="yes" type="button" command="audio_playback_toggle_repeat()"x="40" y="194" src="media_repeat_off_32_32.png" use_overlay="1" accesskey="R" background_color="#00000000" text_color="#111111" enable_expression="osd_configuration==2 &amp;&amp; audio.repeat==1"/>
@@ -276,10 +276,10 @@
 	<osd enabled="yes" type="audio_player" label="track" w="286" h="18" x="50" y="18" font_size="200" background_color="#00000000" text_color="#111111" enable_expression="osd_configuration==1 &amp;&amp; audio.playing==1"/>
 	<!---->
 	<osd enabled="yes" type="text" label="${navigation.item[1].street_name} ${navigation.item[1].street_name_systematic}" font_size="225" x="50" y="36" w="226" h="18" 	background_color="#00000000" text_color="#111111" osd_configuration="1"/>
-	<!---- >
-	<osd enabled="yes" type="compass" font_size="150" x="-60" y="0" w="60" h="80" 	background_color="#00000000" foreground_color="#111111" osd_configuration="1"/>
 	<!---->
-	<osd enabled="yes" type="text" label="${vehicle.position_speed}" x="-60" y="80" w="60" h="15" 	background_color="#00000000" text_color="#111111" osd_configuration="1"/>
+	<osd enabled="yes" type="compass" font_size="150" x="-60" y="36" w="60" h="80" destination_dir_color="#222222"  text_color="#111111" background_color="#00000000" foreground_color="#111111" osd_configuration="1"/>
+	<!---->
+	<osd enabled="yes" type="text" label="${vehicle.position_speed}" x="-60" y="120" w="60" h="15" destination_dir_color="#111111"	background_color="#00000000" text_color="#111111" osd_configuration="1"/>
 	
 	<osd enabled="yes" type="button" command="audio_playback_previous_artist()" x="-36" y="134" src="media_prev_artist_bk_32_32.png" background_color="#00000000" text_color="#111111" osd_configuration="1"/> 
 	<osd enabled="yes" type="button" command="audio_playback_next_artist()" x="-36" y="164" src="media_next_artist_bk_32_32.png" 	background_color="#00000000" text_color="#111111" osd_configuration="1"/>
@@ -289,7 +289,7 @@
 	
 		
 		
-		<!---- > <vehicle name="Demo" profilename="car" enabled="yes" active="yes" follow="1" source="demo://" speed="100"/>
+		<!---- > <vehicle name="Demo" profilename="car" enabled="yes" active="yes" follow="1" source="demo://" speed="45"/>
 		<!-- Vehicle with GPS enabled for gpsd on unix -->
 		<!----> <vehicle name="Local GPS" profilename="car" enabled="yes" active="1" follow="1" source="gpsd://localhost" gpsd_query="w+xj"/>
 
