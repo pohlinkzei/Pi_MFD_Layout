@@ -39,7 +39,7 @@
 		For other formats see http://wiki.navit-project.org/index.php/Coordinate_format.
 		-->
 
-	<navit center="11.5666 48.1333" zoom="32" tracking="1" orientation="-1" recent_dest="250" autozoom_active="1" autozoom="5">
+	<navit center="11.5666 48.1333" zoom="32" tracking="1" orientation="-1" recent_dest="250" autozoom_active="1" autozoom="25">
 
 		<!-- Use one of gtk_drawing_area, qt_qpainter or sdl. 
 		     On windows systems, use win32 -->
